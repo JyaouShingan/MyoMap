@@ -50,6 +50,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	private var mode: MapMode = .Explore {
 		didSet {
 			if self.mode == .Explore {
+				self.modeLabel.text = "Mode: Explore"
 				if self.updateTimer == nil {
 					let camera = MKMapCamera(lookingAtCenterCoordinate: self.mapView.camera.centerCoordinate, fromDistance: 2000, pitch: 0, heading: 0)
 					self.mapView.setCamera(camera, animated: true)
@@ -57,6 +58,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 					self.updateTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateMapCamera"), userInfo: nil, repeats: true)
 				}
 			} else {
+				self.modeLabel.text = "Mode: Navigation"
 				self.updateTimer?.invalidate()
 				self.updateTimer = nil
 				self.mapView.camera.pitch = 40
