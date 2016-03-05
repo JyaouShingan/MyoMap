@@ -27,4 +27,4 @@ def restaurant(lat, lng):
     print(list)
     return list
 
-restaurant(43.4776419,-80.5303093)
+#restaurant(43.4776419,-80.5303093)

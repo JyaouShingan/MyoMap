@@ -43,6 +43,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	private var firstTimeGetLocation = true
 	private let regionRadius: CLLocationDistance = 1000
 	private let mp = MusicController()
+	private var place = []
 
 	private var mapZoom: CGFloat = 0
 
@@ -149,7 +150,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		let direction = MKDirections(request:request)
 
 		direction.calculateDirectionsWithCompletionHandler { [unowned self] response, error in
-			guard let unwrappedResponse = response else { return }
+			guard let unwrappedResponse = response else {
+				print("error occured")
+				return
+			}
 
 			let startCircle = MMMapPoint(coordinate: self.startCoordinate, title: "Start")
 			let destCircle = MMMapPoint(coordinate: self.destCoordinate, title: "Destination")
@@ -161,7 +165,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 				self.mapView.addOverlay(route.polyline)
 				self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
 			}
+		}
+	}
+	
+	func nearbyRequest() {
+		let request = MKLocalSearchRequest()
+		request.naturalLanguageQuery = "Restaurants"
+		request.region = mapView.region
+		
+		let search = MKLocalSearch(request:request)
+		
+		search.startWithCompletionHandler { response, error in
+			guard let unwrappedResponse = response else {
+				print("error occured")
+				return
+			}
 
+			for instance in unwrappedResponse.mapItems {
+				let temp = MMMapPoint(coordinate: instance.placemark.coordinate, title: instance.name)
+				self.mapView.addAnnotation(temp)
+			}
 		}
 	}
 
@@ -194,6 +217,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 				view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.6, 0.6)
 				return view
 			} else if title == "Destination" {
+				let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "PointAnnotation")
+				view.image = UIImage(named: "Destination")
+				view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.6, 0.6)
+				return view
+			} else {
 				let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "PointAnnotation")
 				view.image = UIImage(named: "Destination")
 				view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.6, 0.6)
@@ -301,7 +329,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 						wSelf.mapType = wSelf.mapTypes[index]
 						wSelf.mapView.mapType = wSelf.mapTypes[index]
 					case .DoubleTap:
-						() // SHOW FOOD
+						wSelf.nearbyRequest()
 					case .FingersSpread:
 						wSelf.mode = .Navigation
 					default:
@@ -310,17 +338,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 				} else {
 					switch pose.type {
 					case .WaveOut:
-						self!.mp.next()
-						self!.mp.play()
+						wSelf.mp.next()
+						wSelf.mp.play()
 					case .WaveIn:
 						let tempState = self!.mp.getState()
 						switch tempState {
 						case .Paused:
-							self!.mp.play()
+							wSelf.mp.play()
 						case .Playing:
-							self!.mp.pause()
+							wSelf.mp.pause()
 						case .Stopped:
-							self!.mp.addRandomSong()
+							wSelf.mp.addRandomSong()
 						default:
 							()
 						}
