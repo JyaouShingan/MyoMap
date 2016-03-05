@@ -48,7 +48,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	private var mode: MapMode = .Explore {
 		didSet {
 			if self.mode == .Explore {
-				if self.updateTimer != nil {
+				if self.updateTimer == nil {
+					self.needCenterAngle = true
 					self.updateTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateMapCamera"), userInfo: nil, repeats: true)
 				}
 			} else {
@@ -72,6 +73,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
 
 		self.view.sendSubviewToBack(self.mapView)
+		self.mapView.showsUserLocation = true
 
 		self.setupMyoCallbacks()
 	}
@@ -80,6 +82,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		super.viewWillAppear(animated)
 		if CLLocationManager.locationServicesEnabled() {
 			self.locationManager.startUpdatingLocation()
+			self.locationManager.startUpdatingHeading()
 		}
 	}
 
@@ -97,7 +100,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	}
 
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		print("Updated Location")
 		if let locValue = manager.location?.coordinate {
 			self.currCoordinate = locValue
 			print("locations = \(locValue.latitude) \(locValue.longitude)")
@@ -119,8 +121,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 				}
 				self.routeRequest()
 				self.firstTimeGetLocation = false
+				self.mode = .Explore
 			}
 		}
+	}
+
+	func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+
 	}
 
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -206,24 +213,55 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	}
 
 	// MARK: Explore Mode Camera
+
 	private var centerAngle: TLMEulerAngles = TLMEulerAngles()
 	private var currAngle: TLMEulerAngles = TLMEulerAngles()
-	private let YAW_THRESHOLD = 20.0
-	private let PITCH_THRESHOLD = 20.0
-	private let ROLL_THRESHOLD = 20.0
+	private let YAW_THRESHOLD = 10.0
+	private let PITCH_THRESHOLD = 10.0
+	private let ROLL_THRESHOLD = 15.0
+
+	private var needCenterAngle: Bool = true
 
 	private var updateTimer: NSTimer?
 
 	private func processOrientation(angle: TLMEulerAngles) {
+		if self.needCenterAngle {
+			self.centerAngle = angle
+			self.needCenterAngle = false
+		}
 		self.currAngle = angle
 	}
 
 	@objc private func updateMapCamera() {
 		// YAW
 		let camera = self.mapView.camera
-		if abs(self.currAngle.yaw.degrees - self.centerAngle.yaw.degrees) > self.YAW_THRESHOLD {
-			
+		var yawDiff = self.currAngle.yaw.degrees - self.centerAngle.yaw.degrees
+		if abs(yawDiff) > 180 {
+			yawDiff += (yawDiff > 0 ? -360 : 360)
 		}
+		if abs(yawDiff) > self.YAW_THRESHOLD {
+			let newLongitude = max(-180, min(180, camera.centerCoordinate.longitude - camera.altitude * (yawDiff > 0 ? yawDiff - 10 : yawDiff + 10) * 0.00000001))
+			camera.centerCoordinate.longitude = newLongitude
+		}
+		// PITCH
+		var pitchDiff = self.currAngle.pitch.degrees - self.centerAngle.pitch.degrees
+		if abs(pitchDiff) > 180 {
+			pitchDiff += (pitchDiff > 0 ? -360 : 360)
+		}
+		if abs(pitchDiff) > self.PITCH_THRESHOLD {
+			let newLatitude = max(-90, min(90, camera.centerCoordinate.latitude + camera.altitude * (pitchDiff > 0 ? pitchDiff - 10 : pitchDiff + 10) * 0.00000001))
+			camera.centerCoordinate.latitude = newLatitude
+		}
+		
+		// ROLL
+		let rollDiff = self.currAngle.roll.degrees - self.centerAngle.roll.degrees
+		if abs(rollDiff) > self.ROLL_THRESHOLD {
+			camera.altitude *= (1 + (rollDiff - 15)/500)
+		}
+		self.mapView.camera = camera
+		print("YawDiff:  \(yawDiff)")
+		print("PitchDiff:\(pitchDiff)")
+		print("RollDiff: \(rollDiff)")
 	}
 
 	// MARK: Setups
@@ -263,7 +301,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 						wSelf.mapView.mapType = wSelf.mapTypes[index]
 					case .DoubleTap:
 						() // SHOW FOOD
-					case .Fist:
+					case .FingersSpread:
 						wSelf.mode = .Navigation
 					default:
 						()
