@@ -18,6 +18,8 @@
 		A24712361C8A800000106D7F /* MyoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712351C8A800000106D7F /* MyoManager.swift */; };
 		A24712381C8A9D8700106D7F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712371C8A9D8700106D7F /* Utils.swift */; };
 		A247123A1C8AA95500106D7F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24712391C8AA95500106D7F /* MapKit.framework */; };
+		A247123D1C8AB58B00106D7F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247123C1C8AB58B00106D7F /* MapViewController.swift */; };
+		A247123F1C8AB5C500106D7F /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247123E1C8AB5C500106D7F /* Locations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		A24712351C8A800000106D7F /* MyoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyoManager.swift; sourceTree = "<group>"; };
 		A24712371C8A9D8700106D7F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A24712391C8AA95500106D7F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A247123C1C8AB58B00106D7F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A247123E1C8AB5C500106D7F /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 				A24712041C8A797700106D7F /* HomeController.swift */,
 				A24712061C8A797700106D7F /* Main.storyboard */,
 				A24712371C8A9D8700106D7F /* Utils.swift */,
+				A247123C1C8AB58B00106D7F /* MapViewController.swift */,
+				A247123E1C8AB5C500106D7F /* Locations.swift */,
 			);
 			path = MyoMap;
 			sourceTree = "<group>";
@@ -293,9 +299,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A247123F1C8AB5C500106D7F /* Locations.swift in Sources */,
 				A24712361C8A800000106D7F /* MyoManager.swift in Sources */,
 				A24712051C8A797700106D7F /* HomeController.swift in Sources */,
 				A24712031C8A797700106D7F /* AppDelegate.swift in Sources */,
+				A247123D1C8AB58B00106D7F /* MapViewController.swift in Sources */,
 				A24712381C8A9D8700106D7F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,7 +453,7 @@
 				);
 				INFOPLIST_FILE = MyoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = home.MyoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MyoMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyoMap/MyoMap-Bridging-Header.h";
 			};
@@ -462,7 +470,7 @@
 				);
 				INFOPLIST_FILE = MyoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = home.MyoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MyoMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyoMap/MyoMap-Bridging-Header.h";
 			};
@@ -535,6 +543,7 @@
 				A24712291C8A797700106D7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A247122A1C8A797700106D7F /* Build configuration list for PBXNativeTarget "MyoMapTests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +552,7 @@
 				A247122C1C8A797700106D7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A247122D1C8A797700106D7F /* Build configuration list for PBXNativeTarget "MyoMapUITests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +561,7 @@
 				A247122F1C8A797700106D7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

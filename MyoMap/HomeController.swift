@@ -100,6 +100,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 	}
 
 	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
 		self.selectionState = self.myoConnected ? .StartPoint : .Disconnected
 		self.myoManager.didReceivePoseChangeCallback = {[weak self] (pose: TLMPose) -> () in
 			if let wSelf = self {
@@ -112,8 +113,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 					case .Destination:
 						wSelf.selectionState = .Finished
 					case .Finished:
-						()
-						//TODO: Segue stuff, enter map
+						wSelf.performSegueWithIdentifier("ToMap", sender: self)
 					}
 				} else if pose.type == .WaveIn {
 					switch wSelf.selectionState {
@@ -197,8 +197,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 		case .Destination:
 			self.selectionState = .Finished
 		case .Finished:
-			()
-			//TODO: Segue stuff, enter map
+			self.performSegueWithIdentifier("ToMap", sender: self)
 		}
 	}
 
@@ -220,6 +219,21 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
 	func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 		return self.pickerViewSelections[row]
+	}
+
+	// MARK: Segues
+
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if let identifier = segue.identifier {
+			if identifier == "ToMap" {
+				if let dest = segue.destinationViewController as? MapViewController {
+					let startPointIndex = self.startPointPKView.selectedRowInComponent(0)
+					let destinatinoIndex = self.destinationPointPKView.selectedRowInComponent(0)
+					dest.startPoint = PointType(rawValue: startPointIndex)!
+					dest.destination = PointType(rawValue: destinatinoIndex)!
+				}
+			}
+		}
 	}
 
 	// MARK: Utils

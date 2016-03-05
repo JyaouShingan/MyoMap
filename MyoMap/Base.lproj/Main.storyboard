@@ -119,11 +119,51 @@
                         <outlet property="myoStatusLabel" destination="9ge-td-aHS" id="vOR-rM-aAF"/>
                         <outlet property="startPointLabel" destination="e7e-pD-k8i" id="vkd-3A-w9A"/>
                         <outlet property="startPointPKView" destination="8PU-ge-EnA" id="PLb-DG-LIv"/>
+                        <segue destination="Fad-I9-9B6" kind="show" identifier="ToMap" id="yhW-hg-4dX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="737.5" y="285.5"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="iCh-aH-lh9">
+            <objects>
+                <viewController id="Fad-I9-9B6" customClass="MapViewController" customModule="MyoMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lYo-bi-0hh"/>
+                        <viewControllerLayoutGuide type="bottom" id="GxN-hg-Tqe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vne-Dz-NYS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xxm-7z-sh3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xxm-7z-sh3" firstAttribute="top" secondItem="lYo-bi-0hh" secondAttribute="bottom" id="CaZ-G5-9ix"/>
+                            <constraint firstItem="xxm-7z-sh3" firstAttribute="bottom" secondItem="GxN-hg-Tqe" secondAttribute="top" id="Hqf-aG-JNU"/>
+                            <constraint firstAttribute="trailing" secondItem="xxm-7z-sh3" secondAttribute="trailing" id="WGO-SX-qan"/>
+                            <constraint firstItem="xxm-7z-sh3" firstAttribute="top" secondItem="Vne-Dz-NYS" secondAttribute="top" constant="20" symbolic="YES" id="YND-kD-Rfg"/>
+                            <constraint firstItem="xxm-7z-sh3" firstAttribute="leading" secondItem="Vne-Dz-NYS" secondAttribute="leading" id="phn-50-DFo"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="YND-kD-Rfg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="mapView" destination="xxm-7z-sh3" id="MJm-nG-80a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AsH-Vo-H16" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1151.5" y="285.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="46R-gp-7Ka">

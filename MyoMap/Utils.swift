@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 extension UIPickerView {
 	func setFocused(focus focus: Bool) {
@@ -20,5 +21,11 @@ extension UIPickerView {
 			self.layer.borderWidth = 0
 			self.layer.borderColor = UIColor.clearColor().CGColor
 		}
+	}
+}
+
+extension CLLocationCoordinate2D {
+	func clLocation() -> CLLocation {
+		return CLLocation(latitude: self.latitude, longitude: self.longitude)
 	}
 }

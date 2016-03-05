@@ -53,6 +53,18 @@ class MyoManager: NSObject {
 		pController.presentViewController(controller, animated: true, completion: nil)
 	}
 
+	func clearCallbacks() {
+		self.didConnectedDeviceCallback = nil
+		self.didDisconnectedDeviceCallback = nil
+		self.didSyncArmCallback = nil
+		self.didUnsyncArmCallback = nil
+		self.didUnlockDeviceCallback = nil
+		self.didLockDeviceCallback = nil
+		self.didReceiveOrientationCallback = nil
+		self.didReceiveAccelerometerCallback = nil
+		self.didReceivePoseChangeCallback = nil
+	}
+
 	@objc private func didConnectedDevice(notification: NSNotification) {
 		if let myo = notification.userInfo?[kTLMKeyMyo] as? TLMMyo {
 			NSLog("<MyoManager> Connected to Myo: \(myo.name)")
