@@ -50,12 +50,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		didSet {
 			if self.mode == .Explore {
 				if self.updateTimer == nil {
+					let camera = MKMapCamera(lookingAtCenterCoordinate: self.mapView.camera.centerCoordinate, fromDistance: 2000, pitch: 0, heading: 0)
+					self.mapView.setCamera(camera, animated: true)
 					self.needCenterAngle = true
 					self.updateTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateMapCamera"), userInfo: nil, repeats: true)
 				}
 			} else {
 				self.updateTimer?.invalidate()
 				self.updateTimer = nil
+				self.mapView.camera.pitch = 40
+				self.mapView.camera.altitude = 2000
 			}
 		}
 	}
@@ -82,8 +86,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		if CLLocationManager.locationServicesEnabled() {
-			self.locationManager.startUpdatingLocation()
 			self.locationManager.startUpdatingHeading()
+			self.locationManager.startUpdatingLocation()
 		}
 	}
 
@@ -93,6 +97,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
 	override func viewWillDisappear(animated: Bool) {
 		self.locationManager.stopUpdatingLocation()
+		self.locationManager.stopUpdatingHeading()
 	}
 
 	private func centerMapOnLocation(location: CLLocation, animated: Bool) {
@@ -123,6 +128,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 				self.routeRequest()
 				self.firstTimeGetLocation = false
 				self.mode = .Explore
+			} else if self.mode == .Navigation {
+				let camera = MKMapCamera(lookingAtCenterCoordinate: locValue, fromDistance: 2000, pitch: 40, heading: locationManager.heading?.trueHeading ?? 0)
+				self.mapView.setCamera(camera, animated: true)
 			}
 		}
 	}
@@ -259,7 +267,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		if abs(rollDiff) > self.ROLL_THRESHOLD {
 			camera.altitude *= (1 + (rollDiff - 15)/500)
 		}
-		self.mapView.camera = camera
+		self.mapView.setCamera(camera, animated: true)
 		print("YawDiff:  \(yawDiff)")
 		print("PitchDiff:\(pitchDiff)")
 		print("RollDiff: \(rollDiff)")
