@@ -18,6 +18,7 @@
 		C394F8FC1C8A996E00F7213A /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C394F8FB1C8A996E00F7213A /* MyoKit.framework */; };
 		C394F8FE1C8A9FD600F7213A /* MapUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C394F8FD1C8A9FD600F7213A /* MapUI.swift */; };
 		C394F9001C8AA31500F7213A /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C394F8FF1C8AA31500F7213A /* Locations.swift */; };
+		C394F9021C8AB3E300F7213A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C394F9011C8AB3E300F7213A /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		C394F8FB1C8A996E00F7213A /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyoKit.framework; sourceTree = "<group>"; };
 		C394F8FD1C8A9FD600F7213A /* MapUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUI.swift; sourceTree = "<group>"; };
 		C394F8FF1C8AA31500F7213A /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		C394F9011C8AB3E300F7213A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C394F9021C8AB3E300F7213A /* MapKit.framework in Frameworks */,
 				C394F8FC1C8A996E00F7213A /* MyoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +90,7 @@
 		A24711F61C8A797700106D7F = {
 			isa = PBXGroup;
 			children = (
+				C394F9011C8AB3E300F7213A /* MapKit.framework */,
 				A24712011C8A797700106D7F /* MyoMap */,
 				A24712161C8A797700106D7F /* MyoMapTests */,
 				A24712211C8A797700106D7F /* MyoMapUITests */,
@@ -224,6 +228,11 @@
 				TargetAttributes = {
 					A24711FE1C8A797700106D7F = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A24712121C8A797700106D7F = {
 						CreatedOnToolsVersion = 7.2.1;

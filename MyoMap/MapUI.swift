@@ -45,7 +45,32 @@ class MapUI: UIViewController, CLLocationManagerDelegate {
 			let c = loc.transform(locValue!)
 			centerMapOnLocation(c)
 			firstTimeFocus = false
+			RouteRequest()
 		}
 	}
 	
+	func RouteRequest() {
+		let request = MKDirectionsRequest()
+		request.source = MKMapItem(placemark: MKPlacemark(coordinate: locValue!, addressDictionary: nil))
+		request.destination = MKMapItem(placemark: MKPlacemark(coordinate: loc.wemesh2D, addressDictionary: nil))
+		request.requestsAlternateRoutes = true
+		request.transportType = .Any
+		
+		let direction = MKDirections(request:request)
+		
+		direction.calculateDirectionsWithCompletionHandler { [unowned self] response, error in
+			guard let unwrappedResponse = response else { return }
+			
+			for route in unwrappedResponse.routes {
+				self.mapView.addOverlay(route.polyline)
+				self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+			}
+		}
+	}
+	
+	func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+		let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+		renderer.strokeColor = UIColor.blueColor()
+		return renderer
+	}
 }
