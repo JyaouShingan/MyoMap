@@ -117,6 +117,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 						wSelf.selectionState = .Finished
 					case .Finished:
 						wSelf.performSegueWithIdentifier("ToMap", sender: self)
+						self!.mp.pause()
 					}
 				} else if pose.type == .WaveIn {
 					switch wSelf.selectionState {
