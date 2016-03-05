@@ -24,5 +24,15 @@ class MusicController {
 		mp.skipToNextItem()
 	}
 	
+	func getState() -> MPMusicPlaybackState {
+		return mp.playbackState
+	}
 	
+	func addRandomSong() {
+		mp.shuffleMode = .Songs
+		mp.repeatMode = .All
+		let songQuery = MPMediaQuery.songsQuery()
+		mp.setQueueWithQuery(songQuery)
+		mp.play()
+	}
 }

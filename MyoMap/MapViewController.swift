@@ -42,6 +42,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	private var locationManager = CLLocationManager()
 	private var firstTimeGetLocation = true
 	private let regionRadius: CLLocationDistance = 1000
+	private let mp = MusicController()
 
 	private var mapZoom: CGFloat = 0
 
@@ -309,9 +310,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 				} else {
 					switch pose.type {
 					case .WaveOut:
-						() // Music
+						self!.mp.next()
+						self!.mp.play()
 					case .WaveIn:
-						() // Music
+						let tempState = self!.mp.getState()
+						switch tempState {
+						case .Paused:
+							self!.mp.play()
+						case .Playing:
+							self!.mp.pause()
+						case .Stopped:
+							self!.mp.addRandomSong()
+						default:
+							()
+						}
 					case .DoubleTap:
 						wSelf.mode = .Explore
 					default:
