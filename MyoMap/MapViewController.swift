@@ -43,7 +43,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	private var firstTimeGetLocation = true
 	private let regionRadius: CLLocationDistance = 1000
 	private let mp = MusicController()
-	private var place = []
+	private var nearby = false
 
 	private var mapZoom: CGFloat = 0
 
@@ -163,7 +163,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 				return
 			}
 
-			let startCircle = MMMapPoint(coordinate: self.startCoordinate, title: "Start")
+			let startCircle = MMMapPoint(coordinate: self.startCoordinate, title: "StartPoint")
 			let destCircle = MMMapPoint(coordinate: self.destCoordinate, title: "Destination")
 
 
@@ -188,6 +188,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 				print("error occured")
 				return
 			}
+			
+			self.nearby = true
 
 			for instance in unwrappedResponse.mapItems {
 				let temp = MMMapPoint(coordinate: instance.placemark.coordinate, title: instance.name)
@@ -219,20 +221,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
 	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
 		if let title = annotation.title {
-			if title == "Start" {
+			if title == "StartPoint" && self.nearby == false {
 				let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "PointAnnotation")
 				view.image = UIImage(named: "StartPoint")
 				view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.6, 0.6)
 				return view
-			} else if title == "Destination" {
+			} else if title == "Destination" && self.nearby == false {
 				let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "PointAnnotation")
 				view.image = UIImage(named: "Destination")
 				view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.6, 0.6)
 				return view
-			} else {
+			} else if title != "Current Location"{
 				let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "PointAnnotation")
-				view.image = UIImage(named: "Destination")
-				view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.6, 0.6)
+				view.image = UIImage(named: "restaurant")
+				view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4, 0.4)
 				return view
 			}
 		}
@@ -337,7 +339,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 						wSelf.mapType = wSelf.mapTypes[index]
 						wSelf.mapView.mapType = wSelf.mapTypes[index]
 					case .DoubleTap:
-						wSelf.nearbyRequest()
+						switch wSelf.nearby {
+						case false:
+							wSelf.nearbyRequest()
+						case true:
+							for element in wSelf.mapView.annotations {
+								if element.title! != "StartPoint" &&
+								   element.title! != "Destination" {
+									wSelf.mapView.removeAnnotation(element)
+								}
+							}
+							wSelf.nearby = false
+						}
 					case .FingersSpread:
 						wSelf.mode = .Navigation
 					default:
