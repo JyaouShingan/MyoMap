@@ -9,6 +9,7 @@
 import UIKit
 
 enum HomeControllerSelectionState {
+	case Disconnected
 	case StartPoint
 	case Destination
 	case Finished
@@ -23,19 +24,24 @@ enum HomeControllerPitchState {
 class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
 	@IBOutlet weak var myoSettings: UIButton!
+	@IBOutlet weak var myoStatusLabel: UILabel!
 	@IBOutlet weak var startPointPKView: UIPickerView!
 	@IBOutlet weak var destinationPointPKView: UIPickerView!
 	@IBOutlet weak var startPointLabel: UILabel!
 	@IBOutlet weak var destinationLabel: UILabel!
 
 	var myoManager: MyoManager!
-
+	private var myoConnected: Bool = false
 	private var currentSelectingView: UIPickerView?
 
-	private var selectionState: HomeControllerSelectionState = .StartPoint {
+	private var selectionState: HomeControllerSelectionState = .Disconnected {
 		didSet {
 			UIView.animateWithDuration(0.5) {
 				switch self.selectionState {
+				case .Disconnected:
+					self.disableAllViews()
+					self.startPointPKView.setFocused(focus: false)
+					self.destinationPointPKView.setFocused(focus: false)
 				case .StartPoint:
 					self.disableAllViews()
 					self.startPointLabel.enabled = true
@@ -81,6 +87,8 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.title = "MyoMap"
+		self.myoStatusLabel.text = "Disconnected"
+		self.myoStatusLabel.textColor = UIColor.redColor()
 
 		self.myoManager = MyoManager.sharedInstance()
 		self.startPointPKView.dataSource = self
@@ -92,11 +100,13 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 	}
 
 	override func viewDidAppear(animated: Bool) {
-		self.selectionState = .StartPoint
+		self.selectionState = self.myoConnected ? .StartPoint : .Disconnected
 		self.myoManager.didReceivePoseChangeCallback = {[weak self] (pose: TLMPose) -> () in
 			if let wSelf = self {
 				if pose.type == .Fist {
 					switch wSelf.selectionState {
+					case .Disconnected:
+						() // Do Nothing
 					case .StartPoint:
 						wSelf.selectionState = .Destination
 					case .Destination:
@@ -107,8 +117,10 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 					}
 				} else if pose.type == .WaveIn {
 					switch wSelf.selectionState {
+					case .Disconnected:
+						() // Do Nothing
 					case .StartPoint:
-						() // Do nothing
+						() // Do Nothing
 					case .Destination:
 						wSelf.selectionState = .StartPoint
 					case .Finished:
@@ -135,6 +147,22 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 				}
 			}
 		}
+		self.myoManager.didConnectedDeviceCallback = {[weak self] in
+			if let wSelf = self {
+				wSelf.myoStatusLabel.text = "Connected: \(wSelf.myoManager.currentMyo?.name ?? "Unknown")"
+				wSelf.myoStatusLabel.textColor = UIColor(red: 0, green: 0.6, blue: 0, alpha: 1)
+				wSelf.selectionState = .StartPoint
+				wSelf.myoConnected = true
+			}
+		}
+		self.myoManager.didDisconnectedDeviceCallback = {[weak self] in
+			if let wSelf = self {
+				wSelf.myoStatusLabel.text = "Disconnected"
+				wSelf.myoStatusLabel.textColor = UIColor.redColor()
+				wSelf.selectionState = .Disconnected
+				wSelf.myoConnected = false
+			}
+		}
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -148,6 +176,8 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
 	@IBAction func simulateFist(sender: UIButton) {
 		switch self.selectionState {
+		case .Disconnected:
+			() // Do Nothing
 		case .StartPoint:
 			self.selectionState = .Destination
 		case .Destination:
