@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A24712031C8A797700106D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712021C8A797700106D7F /* AppDelegate.swift */; };
-		A24712051C8A797700106D7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712041C8A797700106D7F /* ViewController.swift */; };
+		A24712051C8A797700106D7F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712041C8A797700106D7F /* HomeController.swift */; };
 		A24712081C8A797700106D7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24712061C8A797700106D7F /* Main.storyboard */; };
 		A247120A1C8A797700106D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24712091C8A797700106D7F /* Assets.xcassets */; };
 		A247120D1C8A797700106D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A247120B1C8A797700106D7F /* LaunchScreen.storyboard */; };
@@ -16,6 +16,8 @@
 		A24712231C8A797700106D7F /* MyoMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712221C8A797700106D7F /* MyoMapUITests.swift */; };
 		A24712331C8A7D3C00106D7F /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24712321C8A7D3C00106D7F /* MyoKit.framework */; };
 		A24712361C8A800000106D7F /* MyoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712351C8A800000106D7F /* MyoManager.swift */; };
+		A24712381C8A9D8700106D7F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712371C8A9D8700106D7F /* Utils.swift */; };
+		A247123A1C8AA95500106D7F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24712391C8AA95500106D7F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,7 @@
 /* Begin PBXFileReference section */
 		A24711FF1C8A797700106D7F /* MyoMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyoMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24712021C8A797700106D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A24712041C8A797700106D7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A24712041C8A797700106D7F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		A24712071C8A797700106D7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A24712091C8A797700106D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A247120C1C8A797700106D7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +54,8 @@
 		A24712321C8A7D3C00106D7F /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyoKit.framework; sourceTree = "<group>"; };
 		A24712341C8A7D4900106D7F /* MyoMap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyoMap-Bridging-Header.h"; sourceTree = "<group>"; };
 		A24712351C8A800000106D7F /* MyoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyoManager.swift; sourceTree = "<group>"; };
+		A24712371C8A9D8700106D7F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A24712391C8AA95500106D7F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A247123A1C8AA95500106D7F /* MapKit.framework in Frameworks */,
 				A24712331C8A7D3C00106D7F /* MyoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +88,7 @@
 		A24711F61C8A797700106D7F = {
 			isa = PBXGroup;
 			children = (
+				A24712391C8AA95500106D7F /* MapKit.framework */,
 				A24712011C8A797700106D7F /* MyoMap */,
 				A24712161C8A797700106D7F /* MyoMapTests */,
 				A24712211C8A797700106D7F /* MyoMapUITests */,
@@ -107,8 +113,9 @@
 				A24712301C8A798A00106D7F /* Frameworks */,
 				A24712021C8A797700106D7F /* AppDelegate.swift */,
 				A24712351C8A800000106D7F /* MyoManager.swift */,
-				A24712041C8A797700106D7F /* ViewController.swift */,
+				A24712041C8A797700106D7F /* HomeController.swift */,
 				A24712061C8A797700106D7F /* Main.storyboard */,
+				A24712371C8A9D8700106D7F /* Utils.swift */,
 			);
 			path = MyoMap;
 			sourceTree = "<group>";
@@ -218,6 +225,11 @@
 				TargetAttributes = {
 					A24711FE1C8A797700106D7F = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A24712121C8A797700106D7F = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -282,8 +294,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A24712361C8A800000106D7F /* MyoManager.swift in Sources */,
-				A24712051C8A797700106D7F /* ViewController.swift in Sources */,
+				A24712051C8A797700106D7F /* HomeController.swift in Sources */,
 				A24712031C8A797700106D7F /* AppDelegate.swift in Sources */,
+				A24712381C8A9D8700106D7F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
