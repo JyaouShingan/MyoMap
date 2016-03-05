@@ -20,9 +20,9 @@
 		A247123A1C8AA95500106D7F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24712391C8AA95500106D7F /* MapKit.framework */; };
 		A247123D1C8AB58B00106D7F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247123C1C8AB58B00106D7F /* MapViewController.swift */; };
 		A247123F1C8AB5C500106D7F /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247123E1C8AB5C500106D7F /* Locations.swift */; };
+		A24712411C8AD0C900106D7F /* MMMapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712401C8AD0C900106D7F /* MMMapPoint.swift */; };
 		A24712441C8AD48100106D7F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712421C8AD48100106D7F /* Place.swift */; };
 		A24712451C8AD48100106D7F /* request.py in Resources */ = {isa = PBXBuildFile; fileRef = A24712431C8AD48100106D7F /* request.py */; };
-		A24712411C8AD0C900106D7F /* MMMapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712401C8AD0C900106D7F /* MMMapPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,9 +63,9 @@
 		A24712391C8AA95500106D7F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A247123C1C8AB58B00106D7F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A247123E1C8AB5C500106D7F /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		A24712401C8AD0C900106D7F /* MMMapPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMMapPoint.swift; sourceTree = "<group>"; };
 		A24712421C8AD48100106D7F /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		A24712431C8AD48100106D7F /* request.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = request.py; sourceTree = "<group>"; };
-		A24712401C8AD0C900106D7F /* MMMapPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMMapPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,13 +124,13 @@
 				A24712021C8A797700106D7F /* AppDelegate.swift */,
 				A24712351C8A800000106D7F /* MyoManager.swift */,
 				A24712041C8A797700106D7F /* HomeController.swift */,
-				A24712061C8A797700106D7F /* Main.storyboard */,
 				A24712421C8AD48100106D7F /* Place.swift */,
 				A24712431C8AD48100106D7F /* request.py */,
 				A24712371C8A9D8700106D7F /* Utils.swift */,
 				A247123C1C8AB58B00106D7F /* MapViewController.swift */,
 				A24712401C8AD0C900106D7F /* MMMapPoint.swift */,
 				A247123E1C8AB5C500106D7F /* Locations.swift */,
+				A24712061C8A797700106D7F /* Main.storyboard */,
 			);
 			path = MyoMap;
 			sourceTree = "<group>";

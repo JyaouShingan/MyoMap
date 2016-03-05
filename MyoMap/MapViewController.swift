@@ -20,9 +20,16 @@ enum PointType: Int {
 	case Current
 }
 
+enum MapMode {
+	case Explore
+	case Navigation
+}
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
 	@IBOutlet weak var mapView: MKMapView!
+	@IBOutlet weak var mapTypeSC: UISegmentedControl!
+	@IBOutlet weak var modeLabel: UILabel!
 
 	var startPoint: PointType = .Current
 	var destination: PointType = .Home
@@ -31,22 +38,42 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	private var destCoordinate: CLLocationCoordinate2D!
 	private var currCoordinate: CLLocationCoordinate2D!
 
+	private var myoManager = MyoManager.sharedInstance()
 	private var locationManager = CLLocationManager()
 	private var firstTimeGetLocation = true
 	private let regionRadius: CLLocationDistance = 1000
 
 	private var mapZoom: CGFloat = 0
 
+	private var mode: MapMode = .Explore {
+		didSet {
+			if self.mode == .Explore {
+				if self.updateTimer != nil {
+					self.updateTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateMapCamera"), userInfo: nil, repeats: true)
+				}
+			} else {
+				self.updateTimer?.invalidate()
+				self.updateTimer = nil
+			}
+		}
+	}
+	private var mapType: MKMapType = .Standard
+	private let mapTypes: [MKMapType] = [.Standard, .Satellite, .Hybrid]
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.title = "Map"
 		self.mapView.delegate = self
 
-		MyoManager.sharedInstance().clearCallbacks()
+		self.myoManager.clearCallbacks()
 
 		self.locationManager.delegate = self
 		self.locationManager.requestAlwaysAuthorization()
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+
+		self.view.sendSubviewToBack(self.mapView)
+
+		self.setupMyoCallbacks()
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -98,6 +125,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		let alert = UIAlertController(title: "Error", message: "Cannot get current location", preferredStyle: UIAlertControllerStyle.Alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
 		self.presentViewController(alert, animated: true) { () -> Void in
 			self.navigationController?.popViewControllerAnimated(true)
 		}
@@ -175,5 +203,91 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		if zoomer < 0 {zoomer = 0}
 		self.mapZoom = zoomer
 		print("<MapView> Zoom changed: \(zoomer)")
+	}
+
+	// MARK: Explore Mode Camera
+	private var centerAngle: TLMEulerAngles = TLMEulerAngles()
+	private var currAngle: TLMEulerAngles = TLMEulerAngles()
+	private let YAW_THRESHOLD = 20.0
+	private let PITCH_THRESHOLD = 20.0
+	private let ROLL_THRESHOLD = 20.0
+
+	private var updateTimer: NSTimer?
+
+	private func processOrientation(angle: TLMEulerAngles) {
+		self.currAngle = angle
+	}
+
+	@objc private func updateMapCamera() {
+		// YAW
+		let camera = self.mapView.camera
+		if abs(self.currAngle.yaw.degrees - self.centerAngle.yaw.degrees) > self.YAW_THRESHOLD {
+			
+		}
+	}
+
+	// MARK: Setups
+
+	private func setupMyoCallbacks() {
+		self.myoManager.didDisconnectedDeviceCallback = {[weak self] in
+			if let wSelf = self {
+				let alert = UIAlertController(title: "Error", message: "Lost connection to MyoBand", preferredStyle: .Alert)
+				alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+				wSelf.presentViewController(alert, animated: true, completion: { () -> Void in
+					wSelf.navigationController?.popViewControllerAnimated(true)
+				})
+			}
+		}
+		self.myoManager.didUnsyncArmCallback = { [weak self] in
+			if let wSelf = self {
+				let alert = UIAlertController(title: "Error", message: "MyoBand lost sync with arm", preferredStyle: .Alert)
+				alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+				wSelf.presentViewController(alert, animated: true, completion: { () -> Void in
+					wSelf.navigationController?.popViewControllerAnimated(true)
+				})
+			}
+		}
+		self.myoManager.didReceivePoseChangeCallback = {[weak self] (pose: TLMPose) -> () in
+			if let wSelf = self {
+				if wSelf.mode == .Explore {
+					switch pose.type {
+					case .WaveIn:
+						let index = max(0, min(2 ,wSelf.mapTypeSC.selectedSegmentIndex - 1))
+						wSelf.mapTypeSC.selectedSegmentIndex = index
+						wSelf.mapType = wSelf.mapTypes[index]
+						wSelf.mapView.mapType = wSelf.mapTypes[index]
+					case .WaveOut:
+						let index = max(0, min(2 ,wSelf.mapTypeSC.selectedSegmentIndex + 1))
+						wSelf.mapTypeSC.selectedSegmentIndex = index
+						wSelf.mapType = wSelf.mapTypes[index]
+						wSelf.mapView.mapType = wSelf.mapTypes[index]
+					case .DoubleTap:
+						() // SHOW FOOD
+					case .Fist:
+						wSelf.mode = .Navigation
+					default:
+						()
+					}
+				} else {
+					switch pose.type {
+					case .WaveOut:
+						() // Music
+					case .WaveIn:
+						() // Music
+					case .DoubleTap:
+						wSelf.mode = .Explore
+					default:
+						()
+					}
+				}
+			}
+		}
+		self.myoManager.didReceiveOrientationCallback = {[weak self] (angle: TLMEulerAngles) -> () in
+			if let wSelf = self {
+				if wSelf.mode == .Explore {
+					wSelf.processOrientation(angle)
+				}
+			}
+		}
 	}
 }
