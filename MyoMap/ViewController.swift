@@ -7,19 +7,34 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
 	@IBOutlet weak var myoSettings: UIButton!
 	var myoManager: MyoManager!
+	var locationManager = CLLocationManager()
+	var locValue: CLLocationCoordinate2D?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+		self.locationManager.requestAlwaysAuthorization()
+		self.locationManager.requestWhenInUseAuthorization()
+		if CLLocationManager.locationServicesEnabled() {
+			self.locationManager.delegate = self
+			self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+			self.locationManager.startUpdatingLocation()
+		}
 		self.myoManager = MyoManager()
 		// Do any additional setup after loading the view, typically from a nib.
 	}
 
+	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		locValue = manager.location!.coordinate
+		//print("locations = \(locValue!.latitude) \(locValue!.longitude)")
+	}
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.

@@ -56,6 +56,7 @@ class MyoManager: NSObject {
 	@objc private func didConnectedDevice(notification: NSNotification) {
 		if let myo = notification.userInfo?[kTLMKeyMyo] as? TLMMyo {
 			NSLog("<MyoManager> Connected to Myo: \(myo.name)")
+			
 			self.connectedMyos.append(myo)
 			if let cb = self.didConnectedDeviceCallback {
 				cb()
