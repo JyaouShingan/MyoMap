@@ -149,16 +149,30 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 		}
 		self.myoManager.didConnectedDeviceCallback = {[weak self] in
 			if let wSelf = self {
-				wSelf.myoStatusLabel.text = "Connected: \(wSelf.myoManager.currentMyo?.name ?? "Unknown")"
-				wSelf.myoStatusLabel.textColor = UIColor(red: 0, green: 0.6, blue: 0, alpha: 1)
-				wSelf.selectionState = .StartPoint
-				wSelf.myoConnected = true
+				wSelf.myoStatusLabel.text = "Unsync: \(wSelf.myoManager.currentMyo?.name ?? "Unknown")"
+				wSelf.myoStatusLabel.textColor = UIColor.darkGrayColor()
 			}
 		}
 		self.myoManager.didDisconnectedDeviceCallback = {[weak self] in
 			if let wSelf = self {
 				wSelf.myoStatusLabel.text = "Disconnected"
 				wSelf.myoStatusLabel.textColor = UIColor.redColor()
+				wSelf.selectionState = .Disconnected
+				wSelf.myoConnected = false
+			}
+		}
+		self.myoManager.didSyncArmCallback = {[weak self] (_ , _) -> () in
+			if let wSelf = self {
+				wSelf.myoStatusLabel.text = "Synced: \(wSelf.myoManager.currentMyo?.name ?? "Unknown")"
+				wSelf.myoStatusLabel.textColor = UIColor(red: 0, green: 0.6, blue: 0, alpha: 1)
+				wSelf.selectionState = .StartPoint
+				wSelf.myoConnected = true
+			}
+		}
+		self.myoManager.didUnsyncArmCallback = {[weak self] in
+			if let wSelf = self {
+				wSelf.myoStatusLabel.text = "Unsync: \(wSelf.myoManager.currentMyo?.name ?? "Unknown")"
+				wSelf.myoStatusLabel.textColor = UIColor.darkGrayColor()
 				wSelf.selectionState = .Disconnected
 				wSelf.myoConnected = false
 			}
