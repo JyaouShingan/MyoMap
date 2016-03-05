@@ -137,7 +137,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	}
 
 	func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-
+		NSLog("Updated Heading")
+		if self.mode == .Navigation {
+			let camera = MKMapCamera(lookingAtCenterCoordinate: self.locationManager.location!.coordinate, fromDistance: 2000, pitch: 40, heading: newHeading.trueHeading)
+			self.mapView.setCamera(camera, animated: true)
+		}
 	}
 
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
