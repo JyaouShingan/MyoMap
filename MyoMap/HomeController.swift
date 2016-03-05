@@ -25,6 +25,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
 	@IBOutlet weak var myoSettings: UIButton!
 	@IBOutlet weak var myoStatusLabel: UILabel!
+	@IBOutlet weak var confirmationLabel: UILabel!
 	@IBOutlet weak var startPointPKView: UIPickerView!
 	@IBOutlet weak var destinationPointPKView: UIPickerView!
 	@IBOutlet weak var startPointLabel: UILabel!
@@ -62,6 +63,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 					self.disableAllViews()
 					self.startPointPKView.setFocused(focus: false)
 					self.destinationPointPKView.setFocused(focus: false)
+					self.confirmationLabel.text = "Start from \(self.pickerViewSelections[self.startPointPKView.selectedRowInComponent(0)]) to \(self.pickerViewSelections[self.destinationPointPKView.selectedRowInComponent(0)]), right?"
 				}
 			}
 		}
@@ -246,6 +248,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 		self.destinationPointPKView.showsSelectionIndicator = false
 		self.destinationPointPKView.userInteractionEnabled = false
 		self.currentSelectingView = nil
+		self.confirmationLabel.text = ""
 	}
 }
 
