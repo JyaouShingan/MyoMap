@@ -16,6 +16,8 @@
 		A24712231C8A797700106D7F /* MyoMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712221C8A797700106D7F /* MyoMapUITests.swift */; };
 		A24712361C8A800000106D7F /* MyoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712351C8A800000106D7F /* MyoManager.swift */; };
 		C394F8FC1C8A996E00F7213A /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C394F8FB1C8A996E00F7213A /* MyoKit.framework */; };
+		C394F8FE1C8A9FD600F7213A /* MapUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C394F8FD1C8A9FD600F7213A /* MapUI.swift */; };
+		C394F9001C8AA31500F7213A /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C394F8FF1C8AA31500F7213A /* Locations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		A24712341C8A7D4900106D7F /* MyoMap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyoMap-Bridging-Header.h"; sourceTree = "<group>"; };
 		A24712351C8A800000106D7F /* MyoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyoManager.swift; sourceTree = "<group>"; };
 		C394F8FB1C8A996E00F7213A /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyoKit.framework; sourceTree = "<group>"; };
+		C394F8FD1C8A9FD600F7213A /* MapUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUI.swift; sourceTree = "<group>"; };
+		C394F8FF1C8AA31500F7213A /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +112,9 @@
 				A24712021C8A797700106D7F /* AppDelegate.swift */,
 				A24712351C8A800000106D7F /* MyoManager.swift */,
 				A24712041C8A797700106D7F /* ViewController.swift */,
+				C394F8FF1C8AA31500F7213A /* Locations.swift */,
 				A24712061C8A797700106D7F /* Main.storyboard */,
+				C394F8FD1C8A9FD600F7213A /* MapUI.swift */,
 			);
 			path = MyoMap;
 			sourceTree = "<group>";
@@ -283,6 +289,8 @@
 			files = (
 				A24712361C8A800000106D7F /* MyoManager.swift in Sources */,
 				A24712051C8A797700106D7F /* ViewController.swift in Sources */,
+				C394F8FE1C8A9FD600F7213A /* MapUI.swift in Sources */,
+				C394F9001C8AA31500F7213A /* Locations.swift in Sources */,
 				A24712031C8A797700106D7F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
