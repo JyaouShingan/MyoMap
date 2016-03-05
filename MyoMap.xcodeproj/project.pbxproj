@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A24712031C8A797700106D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712021C8A797700106D7F /* AppDelegate.swift */; };
+		A24712051C8A797700106D7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712041C8A797700106D7F /* ViewController.swift */; };
+		A24712081C8A797700106D7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24712061C8A797700106D7F /* Main.storyboard */; };
+		A247120A1C8A797700106D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24712091C8A797700106D7F /* Assets.xcassets */; };
+		A247120D1C8A797700106D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A247120B1C8A797700106D7F /* LaunchScreen.storyboard */; };
+		A24712181C8A797700106D7F /* MyoMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712171C8A797700106D7F /* MyoMapTests.swift */; };
+		A24712231C8A797700106D7F /* MyoMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712221C8A797700106D7F /* MyoMapUITests.swift */; };
+		A24712331C8A7D3C00106D7F /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24712321C8A7D3C00106D7F /* MyoKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A24712141C8A797700106D7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A24711F71C8A797700106D7F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A24711FE1C8A797700106D7F;
+			remoteInfo = MyoMap;
+		};
+		A247121F1C8A797700106D7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A24711F71C8A797700106D7F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A24711FE1C8A797700106D7F;
+			remoteInfo = MyoMap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A24711FF1C8A797700106D7F /* MyoMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyoMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24712021C8A797700106D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A24712041C8A797700106D7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A24712071C8A797700106D7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A24712091C8A797700106D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A247120C1C8A797700106D7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A247120E1C8A797700106D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A24712131C8A797700106D7F /* MyoMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyoMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24712171C8A797700106D7F /* MyoMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyoMapTests.swift; sourceTree = "<group>"; };
+		A24712191C8A797700106D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A247121E1C8A797700106D7F /* MyoMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyoMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24712221C8A797700106D7F /* MyoMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyoMapUITests.swift; sourceTree = "<group>"; };
+		A24712241C8A797700106D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A24712321C8A7D3C00106D7F /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyoKit.framework; sourceTree = "<group>"; };
+		A24712341C8A7D4900106D7F /* MyoMap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyoMap-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A24711FC1C8A797700106D7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24712331C8A7D3C00106D7F /* MyoKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A24712101C8A797700106D7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A247121B1C8A797700106D7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A24711F61C8A797700106D7F = {
+			isa = PBXGroup;
+			children = (
+				A24712011C8A797700106D7F /* MyoMap */,
+				A24712161C8A797700106D7F /* MyoMapTests */,
+				A24712211C8A797700106D7F /* MyoMapUITests */,
+				A24712001C8A797700106D7F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A24712001C8A797700106D7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A24711FF1C8A797700106D7F /* MyoMap.app */,
+				A24712131C8A797700106D7F /* MyoMapTests.xctest */,
+				A247121E1C8A797700106D7F /* MyoMapUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A24712011C8A797700106D7F /* MyoMap */ = {
+			isa = PBXGroup;
+			children = (
+				A24712311C8A799600106D7F /* SupportingFiles */,
+				A24712301C8A798A00106D7F /* Frameworks */,
+				A24712021C8A797700106D7F /* AppDelegate.swift */,
+				A24712041C8A797700106D7F /* ViewController.swift */,
+				A24712061C8A797700106D7F /* Main.storyboard */,
+			);
+			path = MyoMap;
+			sourceTree = "<group>";
+		};
+		A24712161C8A797700106D7F /* MyoMapTests */ = {
+			isa = PBXGroup;
+			children = (
+				A24712171C8A797700106D7F /* MyoMapTests.swift */,
+				A24712191C8A797700106D7F /* Info.plist */,
+			);
+			path = MyoMapTests;
+			sourceTree = "<group>";
+		};
+		A24712211C8A797700106D7F /* MyoMapUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A24712221C8A797700106D7F /* MyoMapUITests.swift */,
+				A24712241C8A797700106D7F /* Info.plist */,
+			);
+			path = MyoMapUITests;
+			sourceTree = "<group>";
+		};
+		A24712301C8A798A00106D7F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A24712321C8A7D3C00106D7F /* MyoKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A24712311C8A799600106D7F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A24712091C8A797700106D7F /* Assets.xcassets */,
+				A247120B1C8A797700106D7F /* LaunchScreen.storyboard */,
+				A247120E1C8A797700106D7F /* Info.plist */,
+				A24712341C8A7D4900106D7F /* MyoMap-Bridging-Header.h */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A24711FE1C8A797700106D7F /* MyoMap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A24712271C8A797700106D7F /* Build configuration list for PBXNativeTarget "MyoMap" */;
+			buildPhases = (
+				A24711FB1C8A797700106D7F /* Sources */,
+				A24711FC1C8A797700106D7F /* Frameworks */,
+				A24711FD1C8A797700106D7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyoMap;
+			productName = MyoMap;
+			productReference = A24711FF1C8A797700106D7F /* MyoMap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A24712121C8A797700106D7F /* MyoMapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A247122A1C8A797700106D7F /* Build configuration list for PBXNativeTarget "MyoMapTests" */;
+			buildPhases = (
+				A247120F1C8A797700106D7F /* Sources */,
+				A24712101C8A797700106D7F /* Frameworks */,
+				A24712111C8A797700106D7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A24712151C8A797700106D7F /* PBXTargetDependency */,
+			);
+			name = MyoMapTests;
+			productName = MyoMapTests;
+			productReference = A24712131C8A797700106D7F /* MyoMapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A247121D1C8A797700106D7F /* MyoMapUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A247122D1C8A797700106D7F /* Build configuration list for PBXNativeTarget "MyoMapUITests" */;
+			buildPhases = (
+				A247121A1C8A797700106D7F /* Sources */,
+				A247121B1C8A797700106D7F /* Frameworks */,
+				A247121C1C8A797700106D7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A24712201C8A797700106D7F /* PBXTargetDependency */,
+			);
+			name = MyoMapUITests;
+			productName = MyoMapUITests;
+			productReference = A247121E1C8A797700106D7F /* MyoMapUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A24711F71C8A797700106D7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Peter Chen";
+				TargetAttributes = {
+					A24711FE1C8A797700106D7F = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					A24712121C8A797700106D7F = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = A24711FE1C8A797700106D7F;
+					};
+					A247121D1C8A797700106D7F = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = A24711FE1C8A797700106D7F;
+					};
+				};
+			};
+			buildConfigurationList = A24711FA1C8A797700106D7F /* Build configuration list for PBXProject "MyoMap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A24711F61C8A797700106D7F;
+			productRefGroup = A24712001C8A797700106D7F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A24711FE1C8A797700106D7F /* MyoMap */,
+				A24712121C8A797700106D7F /* MyoMapTests */,
+				A247121D1C8A797700106D7F /* MyoMapUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A24711FD1C8A797700106D7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A247120D1C8A797700106D7F /* LaunchScreen.storyboard in Resources */,
+				A247120A1C8A797700106D7F /* Assets.xcassets in Resources */,
+				A24712081C8A797700106D7F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A24712111C8A797700106D7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A247121C1C8A797700106D7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A24711FB1C8A797700106D7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24712051C8A797700106D7F /* ViewController.swift in Sources */,
+				A24712031C8A797700106D7F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A247120F1C8A797700106D7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24712181C8A797700106D7F /* MyoMapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A247121A1C8A797700106D7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24712231C8A797700106D7F /* MyoMapUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A24712151C8A797700106D7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A24711FE1C8A797700106D7F /* MyoMap */;
+			targetProxy = A24712141C8A797700106D7F /* PBXContainerItemProxy */;
+		};
+		A24712201C8A797700106D7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A24711FE1C8A797700106D7F /* MyoMap */;
+			targetProxy = A247121F1C8A797700106D7F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A24712061C8A797700106D7F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A24712071C8A797700106D7F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A247120B1C8A797700106D7F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A247120C1C8A797700106D7F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A24712251C8A797700106D7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A24712261C8A797700106D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A24712281C8A797700106D7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyoMap",
+				);
+				INFOPLIST_FILE = MyoMap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = home.MyoMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyoMap/MyoMap-Bridging-Header";
+			};
+			name = Debug;
+		};
+		A24712291C8A797700106D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyoMap",
+				);
+				INFOPLIST_FILE = MyoMap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = home.MyoMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyoMap/MyoMap-Bridging-Header";
+			};
+			name = Release;
+		};
+		A247122B1C8A797700106D7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MyoMapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = home.MyoMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyoMap.app/MyoMap";
+			};
+			name = Debug;
+		};
+		A247122C1C8A797700106D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MyoMapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = home.MyoMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyoMap.app/MyoMap";
+			};
+			name = Release;
+		};
+		A247122E1C8A797700106D7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MyoMapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = home.MyoMapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MyoMap;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		A247122F1C8A797700106D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MyoMapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = home.MyoMapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MyoMap;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A24711FA1C8A797700106D7F /* Build configuration list for PBXProject "MyoMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A24712251C8A797700106D7F /* Debug */,
+				A24712261C8A797700106D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A24712271C8A797700106D7F /* Build configuration list for PBXNativeTarget "MyoMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A24712281C8A797700106D7F /* Debug */,
+				A24712291C8A797700106D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A247122A1C8A797700106D7F /* Build configuration list for PBXNativeTarget "MyoMapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A247122B1C8A797700106D7F /* Debug */,
+				A247122C1C8A797700106D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A247122D1C8A797700106D7F /* Build configuration list for PBXNativeTarget "MyoMapUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A247122E1C8A797700106D7F /* Debug */,
+				A247122F1C8A797700106D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A24711F71C8A797700106D7F /* Project object */;
+}
