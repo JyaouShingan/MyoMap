@@ -146,24 +146,77 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xxm-7z-sh3">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="502-tE-5S2">
+                                <rect key="frame" x="166" y="108" width="42" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RsV-IM-b69">
+                                <rect key="frame" x="81" y="72" width="212" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satelite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="502-tE-5S2" firstAttribute="top" secondItem="RsV-IM-b69" secondAttribute="bottom" constant="8" id="5jg-xF-5Xu"/>
                             <constraint firstItem="xxm-7z-sh3" firstAttribute="top" secondItem="lYo-bi-0hh" secondAttribute="bottom" id="CaZ-G5-9ix"/>
+                            <constraint firstItem="502-tE-5S2" firstAttribute="centerX" secondItem="RsV-IM-b69" secondAttribute="centerX" id="HLF-sn-MkJ"/>
                             <constraint firstItem="xxm-7z-sh3" firstAttribute="bottom" secondItem="GxN-hg-Tqe" secondAttribute="top" id="Hqf-aG-JNU"/>
+                            <constraint firstItem="502-tE-5S2" firstAttribute="leading" secondItem="xxm-7z-sh3" secondAttribute="leading" constant="8" id="IXe-xp-xqy"/>
+                            <constraint firstItem="502-tE-5S2" firstAttribute="top" secondItem="xxm-7z-sh3" secondAttribute="top" constant="8" id="P2t-Dg-bN3"/>
+                            <constraint firstItem="RsV-IM-b69" firstAttribute="centerX" secondItem="xxm-7z-sh3" secondAttribute="centerX" id="SNk-R9-L6D"/>
                             <constraint firstAttribute="trailing" secondItem="xxm-7z-sh3" secondAttribute="trailing" id="WGO-SX-qan"/>
                             <constraint firstItem="xxm-7z-sh3" firstAttribute="top" secondItem="Vne-Dz-NYS" secondAttribute="top" constant="20" symbolic="YES" id="YND-kD-Rfg"/>
+                            <constraint firstItem="RsV-IM-b69" firstAttribute="top" secondItem="xxm-7z-sh3" secondAttribute="top" constant="8" id="ZfY-H1-zSo"/>
+                            <constraint firstItem="RsV-IM-b69" firstAttribute="top" secondItem="lYo-bi-0hh" secondAttribute="bottom" constant="8" id="hi5-4d-oYL"/>
+                            <constraint firstItem="xxm-7z-sh3" firstAttribute="top" secondItem="502-tE-5S2" secondAttribute="bottom" constant="-29" id="irB-Y4-fnE"/>
                             <constraint firstItem="xxm-7z-sh3" firstAttribute="leading" secondItem="Vne-Dz-NYS" secondAttribute="leading" id="phn-50-DFo"/>
+                            <constraint firstItem="xxm-7z-sh3" firstAttribute="leading" secondItem="502-tE-5S2" secondAttribute="trailing" constant="-56" id="xgt-z7-KOj"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="YND-kD-Rfg"/>
+                                <exclude reference="irB-Y4-fnE"/>
+                                <exclude reference="xgt-z7-KOj"/>
+                                <exclude reference="ZfY-H1-zSo"/>
+                                <exclude reference="IXe-xp-xqy"/>
+                                <exclude reference="P2t-Dg-bN3"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="mapTypeSC" destination="RsV-IM-b69" id="KU4-26-CBH"/>
                         <outlet property="mapView" destination="xxm-7z-sh3" id="MJm-nG-80a"/>
+                        <outlet property="modeLabel" destination="502-tE-5S2" id="OlJ-44-gWR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsH-Vo-H16" userLabel="First Responder" sceneMemberID="firstResponder"/>
