@@ -33,7 +33,7 @@ class MyoManager: NSObject {
 	var didReceivePoseChangeCallback: ((TLMPose)->())?
 
 	// Initialization
-	override init() {
+	private override init() {
 		super.init()
 		let center = NSNotificationCenter.defaultCenter()
 		center.addObserver(self, selector: Selector("didConnectedDevice:"), name: TLMHubDidConnectDeviceNotification, object: nil)
