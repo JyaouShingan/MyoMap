@@ -82,7 +82,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	func routeRequest() {
 		let request = MKDirectionsRequest()
 		request.source = MKMapItem(placemark: MKPlacemark(coordinate: self.currentLoc!, addressDictionary: nil))
-		request.destination = MKMapItem(placemark: MKPlacemark(coordinate: Locations.wemesh2D, addressDictionary: nil))
+		request.destination = MKMapItem(placemark: MKPlacemark(coordinate: Locations.locations[self.destination.rawValue].cl2D, addressDictionary: nil))
 		request.requestsAlternateRoutes = false
 		request.transportType = .Automobile
 
@@ -91,20 +91,47 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		direction.calculateDirectionsWithCompletionHandler { [unowned self] response, error in
 			guard let unwrappedResponse = response else { return }
 
+			let startCircle = MMMapPoint(coordinate: Locations.locations[self.startPoint.rawValue].cl2D, title: "Start")
+			let destCircle = MMMapPoint(coordinate: Locations.locations[self.destination.rawValue].cl2D, title: "Destination")
+
+
+			self.mapView.addAnnotation(startCircle)
+			self.mapView.addAnnotation(destCircle)
 			for route in unwrappedResponse.routes {
 				self.mapView.addOverlay(route.polyline)
 				self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
 			}
 
-			
 		}
 	}
 
 	func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-		let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-		renderer.strokeColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.7)
-		renderer.lineWidth = 6.5
-		return renderer
+		if let polylineOverlay = overlay as? MKPolyline {
+			let renderer = MKPolylineRenderer(polyline: polylineOverlay)
+			renderer.strokeColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.7)
+			renderer.lineWidth = 6.5
+			return renderer
+		}
+		if let circleOverlay = overlay as? MKCircle {
+			let renderer = MKCircleRenderer(circle: circleOverlay)
+			if circleOverlay.coordinate == Locations.locations[self.startPoint.rawValue].cl2D {
+				renderer.fillColor = UIColor(red: 0, green: 0.7, blue: 0, alpha: 1)
+			} else if circleOverlay.coordinate == Locations.locations[self.destination.rawValue].cl2D {
+				renderer.fillColor = UIColor(red: 0, green: 0, blue: 0.8, alpha: 1)
+			}
+			renderer.strokeColor = UIColor.whiteColor()
+			renderer.lineWidth = 3
+			return renderer
+		}
+		return MKOverlayRenderer()
+	}
+
+	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+		if let title = annotation.title {
+			if title == "Start" {
+				
+			}
+		}
 	}
 
 	func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
