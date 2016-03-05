@@ -17,12 +17,14 @@ def restaurant(lat, lng):
            c = temp['rating']
         except:
            c = 0
-        list.append([temp['name'],
-                     c,
-                    temp['geometry']['location']['lat'],
-                    temp['geometry']['location']['lng']])
+        dict = {}
+        dict['name'] = temp['name']
+        dict['rating'] = c
+        dict['lat'] = temp['geometry']['location']['lat']
+        dict['lng'] = temp['geometry']['location']['lng']
+        list.append(dict)
 
     print(list)
     return list
 
-#restaurant(43.4776419,-80.5303093) TEST 
+restaurant(43.4776419,-80.5303093)
