@@ -32,6 +32,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 	@IBOutlet weak var destinationLabel: UILabel!
 
 	var myoManager: MyoManager!
+	var mp = MusicController()
 	private var myoConnected: Bool = false
 	private var currentSelectingView: UIPickerView?
 
@@ -129,6 +130,18 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 						wSelf.selectionState = .Destination
 						//TODO: Segue stuff, enter map
 					}
+				} else if pose.type == .DoubleTap {
+					switch wSelf.selectionState {
+					case .Disconnected:
+						self!.mp.pause() // stop music if there is
+					case .StartPoint:
+						self!.mp.pause() // stop music if there is
+					case .Destination:
+						self!.mp.pause() // stop music if there is
+					case .Finished:
+						() // do nothing
+						//TODO: Segue stuff, enter map
+					}
 				}
 			}
 		}
@@ -169,6 +182,7 @@ class HomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 				wSelf.myoStatusLabel.textColor = UIColor(red: 0, green: 0.6, blue: 0, alpha: 1)
 				wSelf.selectionState = .StartPoint
 				wSelf.myoConnected = true
+				self!.mp.play()
 			}
 		}
 		self.myoManager.didUnsyncArmCallback = {[weak self] in
