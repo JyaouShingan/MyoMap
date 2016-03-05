@@ -15,6 +15,7 @@
 		A24712181C8A797700106D7F /* MyoMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712171C8A797700106D7F /* MyoMapTests.swift */; };
 		A24712231C8A797700106D7F /* MyoMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712221C8A797700106D7F /* MyoMapUITests.swift */; };
 		A24712331C8A7D3C00106D7F /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24712321C8A7D3C00106D7F /* MyoKit.framework */; };
+		A24712361C8A800000106D7F /* MyoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24712351C8A800000106D7F /* MyoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		A24712241C8A797700106D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A24712321C8A7D3C00106D7F /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyoKit.framework; sourceTree = "<group>"; };
 		A24712341C8A7D4900106D7F /* MyoMap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyoMap-Bridging-Header.h"; sourceTree = "<group>"; };
+		A24712351C8A800000106D7F /* MyoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				A24712311C8A799600106D7F /* SupportingFiles */,
 				A24712301C8A798A00106D7F /* Frameworks */,
 				A24712021C8A797700106D7F /* AppDelegate.swift */,
+				A24712351C8A800000106D7F /* MyoManager.swift */,
 				A24712041C8A797700106D7F /* ViewController.swift */,
 				A24712061C8A797700106D7F /* Main.storyboard */,
 			);
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A24712361C8A800000106D7F /* MyoManager.swift in Sources */,
 				A24712051C8A797700106D7F /* ViewController.swift in Sources */,
 				A24712031C8A797700106D7F /* AppDelegate.swift in Sources */,
 			);
@@ -421,6 +425,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyoMap",
@@ -437,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyoMap",

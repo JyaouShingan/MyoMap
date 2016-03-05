@@ -10,8 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	@IBOutlet weak var myoSettings: UIButton!
+	var myoManager: MyoManager!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		self.myoManager = MyoManager()
 		// Do any additional setup after loading the view, typically from a nib.
 	}
 
@@ -20,6 +25,8 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-
+	@IBAction func openMyoSettings(sender: UIButton) {
+		self.myoManager.openMyoSettings(presentController: self)
+	}
 }
 
