@@ -69,7 +69,7 @@ class MyoManager: NSObject {
 			if let index = self.connectedMyos.indexOf(myo) {
 				self.connectedMyos.removeAtIndex(index)
 			}
-			if let cb = self.didConnectedDeviceCallback {
+			if let cb = self.didDisconnectedDeviceCallback {
 				cb()
 			}
 		}
