@@ -1,5 +1,5 @@
-# MyoMap
-Map controlled by MyoArmBand
+# MyoMap for iOS
+Map controlled by MyoArmBand - Made in 2016 Eng⊕Math Hack
 
 This app is mainly designed for drivers. 
 
